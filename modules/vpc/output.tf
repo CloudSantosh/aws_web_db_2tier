@@ -12,7 +12,7 @@ output "private_subnet_az1_id" {
   value = aws_subnet.private_subnet_az1.id
 }
 
-output "internet_gateway" {
+output "internet_gateway_id" {
   value = aws_internet_gateway.internet_gateway.id
 }
 
@@ -25,6 +25,6 @@ output "region" {
   value = var.region
 }
 
-output "eip_for_nat" {
+output "eip_for_nat_public" {
   value = aws_eip.eip_for_nat.public
 }
