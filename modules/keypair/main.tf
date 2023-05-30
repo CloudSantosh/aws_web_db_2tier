@@ -24,10 +24,13 @@ resource "aws_key_pair" "keypair" {
 resource "local_file" "save-key" {
   content = tls_private_key.private_key.private_key_pem
   //path.module is the module that access current working directory
-  filename = "${path.module}/${var.keypair-name}.pem"
+  filename        = "${path.module}/${var.keypair_name}.pem"
+  file_permission = "0400"
   # changes the file permission to read-only mode
   //provisioner "local-exec" {
+
   //command = "chmod 400 ${path.module}/${var.keypair-name}.pem"
+  depends_on = [tls_private_key.private_key]
 
 }
 
