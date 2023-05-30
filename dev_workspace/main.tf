@@ -8,6 +8,7 @@ module "vpc" {
   project_name            = var.project_name
   vpc_cidr                = var.vpc_cidr
   private_subnet_az1_cidr = var.private_subnet_az1_cidr
+  private_subnet_az2_cidr = var.private_subnet_az2_cidr
   public_subnet_az1_cidr  = var.public_subnet_az1_cidr
 }
 
@@ -34,4 +35,11 @@ module "Frontend" {
   project_name                 = var.project_name
   public_ec2_security_group_id = module.security.public_ec2_security_group_id
 
+}
+
+module "backend" {
+  source                        = "../modules/backend"
+  private_subnet_az1_id         = module.vpc.private_subnet_az1_id
+  private_subnet_az2_id         = module.vpc.private_subnet_az2_id
+  private_rds_security_group_id = module.security.private_rds_security_group_id
 }

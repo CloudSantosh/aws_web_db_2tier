@@ -83,9 +83,25 @@ resource "aws_subnet" "private_subnet_az1" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name = "${var.project_name}-Private Subnet"
+    Name = "${var.project_name}-Private Subnet az1"
   }
 }
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# create private subnet az2
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+resource "aws_subnet" "private_subnet_az2" {
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.private_subnet_az2_cidr
+  availability_zone       = data.aws_availability_zones.available_zones.names[1]
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name = "${var.project_name}-Private Subnet az2"
+  }
+}
+
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # create Elastic IP address for NAT
@@ -135,5 +151,14 @@ resource "aws_route_table" "private_route_table" {
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 resource "aws_route_table_association" "private_subnet_az1_route_table_association" {
   subnet_id      = aws_subnet.private_subnet_az1.id
+  route_table_id = aws_route_table.private_route_table.id
+}
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# associate private subnet az2  to "private route table"
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+resource "aws_route_table_association" "private_subnet_az2_route_table_association" {
+  subnet_id      = aws_subnet.private_subnet_az2.id
   route_table_id = aws_route_table.private_route_table.id
 }
