@@ -5,7 +5,7 @@ sudo yum install -y httpd
 sudo yum install -y php
 sudo rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
-sudo yum install mysql-community-server
+sudo yum install -y mysql-community-server 
 
 
 # Download Lab files
@@ -17,3 +17,5 @@ sudo chkconfig httpd on
 sudo service httpd start
 sudo systemctl enable mysqld
 sudo systemctl start  mysqld
+
+

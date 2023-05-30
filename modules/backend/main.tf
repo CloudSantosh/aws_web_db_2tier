@@ -8,7 +8,7 @@ resource "aws_db_instance" "rds_server_backend" {
   allocated_storage = 10
   //db_name                = "awsrestartdb123"
   engine                 = "mysql"
-  identifier             = "rds_database"
+  identifier             = "rds-database"
   engine_version         = "5.7"
   instance_class         = "db.t2.micro"
   username               = "admin"
