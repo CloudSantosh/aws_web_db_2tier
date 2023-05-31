@@ -6,7 +6,7 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 
 resource "aws_db_instance" "rds_server_backend" {
   allocated_storage = 10
-  //db_name                = "awsrestartdb123"
+  db_name                = "sample"
   engine                 = "mysql"
   identifier             = "rds-database"
   engine_version         = "5.7"
