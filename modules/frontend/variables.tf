@@ -9,4 +9,5 @@ variable "keypair_name" {}
 //variable "rsa_bit" {}
 variable "public_subnet_az1_id" {}
 variable "public_ec2_security_group_id" {}
+//variable "jump_server_security_group_id" {}
 

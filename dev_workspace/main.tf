@@ -33,7 +33,8 @@ module "Frontend" {
   //vpc_id        = module.vpc.vpc_id
   public_subnet_az1_id         = module.vpc.public_subnet_az1_id
   project_name                 = var.project_name
-  public_ec2_security_group_id = module.security.public_ec2_security_group_id
+  public_ec2_security_group_id = [module.security.public_ec2_security_group_id]
+ # public_ec2_security_group_id = [module.security.public_ec2_security_group_id, module.security.jump_server_security_group_id]
 
 }
 

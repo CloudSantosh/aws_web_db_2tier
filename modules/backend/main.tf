@@ -5,7 +5,7 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 }
 
 resource "aws_db_instance" "rds_server_backend" {
-  allocated_storage = 10
+  allocated_storage      = 10
   db_name                = "sample"
   engine                 = "mysql"
   identifier             = "rds-database"
@@ -17,7 +17,5 @@ resource "aws_db_instance" "rds_server_backend" {
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
   vpc_security_group_ids = [var.private_rds_security_group_id]
   skip_final_snapshot    = true
-  //publicly_accessible    = true
-
-
+  publicly_accessible    = false
 }
