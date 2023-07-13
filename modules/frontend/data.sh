@@ -7,6 +7,8 @@ sudo rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.
 sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 sudo yum install -y mysql-community-server 
 
+# PDO driver installed for php
+sudo yum -y install php-pdo php-mysqlnd
 
 #Download Lab files
 #sudo wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-RESTRT-1/267-lab-NF-build-vpc-web-server/s3/lab-app.zip
@@ -18,4 +20,4 @@ sudo service httpd start
 sudo systemctl enable mysqld
 sudo systemctl start  mysqld
 
-echo "******** Completed Installion ********"
+echo "******** Completed Installation ********"
